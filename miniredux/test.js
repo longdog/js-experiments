@@ -13,11 +13,11 @@ function counter(state = 0, action) {
 
 let store = createStore(counter, 10);
 
-store.subscribe(() =>
+let unsubsribe = store.subscribe(() =>
   console.log(store.getState())
 );
 
 store.dispatch({ type: 'INCREMENT' });
 store.dispatch({ type: 'INCREMENT' });
+unsubsribe();
 store.dispatch({ type: 'DECREMENT' });
-
